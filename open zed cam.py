@@ -2,6 +2,7 @@ import sys
 import numpy as np
 import pyzed.sl as sl
 import cv2
+import math
 from ultralytics import YOLO
 
 model = YOLO("yolo-Weights/yolov8n.pt")
@@ -123,8 +124,10 @@ def main() :
         input_type.set_from_svo_file(sys.argv[1])
     init = sl.InitParameters(input_t=input_type)
     init.camera_resolution = sl.RESOLUTION.HD1080
-    init.depth_mode = sl.DEPTH_MODE.PERFORMANCE
-    init.coordinate_units = sl.UNIT.METER
+    # init.depth_mode = sl.DEPTH_MODE.ULTRA
+    init.depth_mode = sl.DEPTH_MODE.PERFORMANCE 
+    # init.coordinate_units = sl.UNIT.METER
+    init.coordinate_units = sl.UNIT.MILLIMETER
 
     # Open the camera
     err = zed.open(init)
@@ -187,11 +190,15 @@ def main() :
                     color = (0, 255, 0)
                     thickness = 2
                     depth_map = sl.Mat()
-                    zed.retrieve_measure(depth_map, sl.MEASURE.DEPTH)
-                    depth_value = depth_map.get_value(int(tengah_x), int(tengah_y))
-                    depth_raw = depth_value[1]
-                    depth_decimal = f"{depth_raw:.2f}"
-                    cv2.putText(image_ocv, str(depth_decimal), org, font, fontScale, color, thickness)
+                    # distance measurement
+                    err, point_cloud_value = point_cloud.get_value(int(round(tengah_x)), int(round(tengah_y)))
+                    distance = math.sqrt(point_cloud_value[0] * point_cloud_value[0] + point_cloud_value[1] * point_cloud_value[1] + point_cloud_value[2] * point_cloud_value[2])
+                    cv2.putText(image_ocv, str(round(distance/1000,2))+'m', org, font, fontScale, color, thickness)
+                    # zed.retrieve_measure(depth_map, sl.MEASURE.DEPTH)
+                    # depth_value = depth_map.get_value(int(tengah_x), int(tengah_y))
+                    # depth_raw = depth_value[1]
+                    # depth_decimal = f"{depth_raw:.2f}"
+                    # cv2.putText(image_ocv, str(depth_decimal), org, font, fontScale, color, thickness)
                     # cv2.putText(image_ocv, 'Person', org, font, fontScale, color, thickness)
 
             cv2.imshow("Image", image_ocv)
