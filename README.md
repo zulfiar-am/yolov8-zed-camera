@@ -20,10 +20,11 @@ Please carefully read the references below on how to install zed python api it d
 ## References
 - https://github.com/stereolabs/zed-python-api
 - https://github.com/stereolabs/zed-sdk
+- https://docs.ultralytics.com/#where-to-start
 - https://github.com/MehmetOKUYAR/Yolo-Object-Detection-and-Distance-Measurement-with-Zed-camera (just a program references, no need to install this)
 
 <br>
-After you install all the dependencies and prerequisites of ZED Stereocam, please download this python3.12 & python3.7 file via the link below
+After you install all the dependencies and prerequisites of ZED Stereocam, please download this python3.12 & python3.7 file via the link below <br>
 https://drive.google.com/drive/folders/1CQlU_VdV1EUy91CexMiISxSxX_9BeJAi <br>
 <br>
 
