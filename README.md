@@ -1,7 +1,7 @@
 # Muqaddimah
 ## Integrated YOLOv8 with Stereolabs Zed Stereo Camera. <br>
 This program detects a person and estimates their distance (using eucledian) from the camera using the ZED Stereo Camera in Python 3. <br>
-I created this program for the Mining Expo that will be held in September as part of an Anti-Collision prototype. <br>
+I created this program for my recent research. <br>
 
 ## You can see how the program works in the gif below.
 
