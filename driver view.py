@@ -102,11 +102,11 @@ class BrakeLevelApp(QWidget):
     def updateImage(self, level):
         # Map slider value to image path
         image_paths = [
-            "Downloads/ACS/ACS-empty.png",  # Image for brake level 0
-            "Downloads/ACS/ACS-06.png",  # Image for brake level 1
-            "Downloads/ACS/ACS-07.png",  # Image for brake level 2
-            "Downloads/ACS/ACS-08.png",  # Image for brake level 3
-            "Downloads/ACS/ACS-09.png"   # Image for brake level 4
+            "Downloads/ACS/ACS-12.png",  # Image for brake level 0
+            "Downloads/ACS/ACS-13.png",  # Image for brake level 1
+            "Downloads/ACS/ACS-14.png",  # Image for brake level 2
+            "Downloads/ACS/ACS-15.png",  # Image for brake level 3
+            "Downloads/ACS/ACS-16.png"   # Image for brake level 4
         ]
         
         pixmap = QPixmap(image_paths[level])
